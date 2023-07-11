@@ -15,7 +15,7 @@
     "postinstall": "npm rebuild node-sass",
     "start": "node app.js",
     "test": "nyc mocha --timeout=10000 --exit",
-    "lint": "eslint \"**/*.js\""
+    "lint": "eslint \"**/*.js\"",
     "sonar": "node sonar-project.js"
   },
   "dependencies": {
