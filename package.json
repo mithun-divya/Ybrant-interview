@@ -63,6 +63,7 @@
     "passport-local": "^1.0.0",
     "passport-oauth": "^1.0.0",
     "passport-oauth2-refresh": "^2.1.0",
+    "sonarqube-scanner": "^2.7.0",
     "passport-openid": "^0.4.0",
     "passport-snapchat": "^1.0.0",
     "passport-twitch-new": "^0.0.2",
