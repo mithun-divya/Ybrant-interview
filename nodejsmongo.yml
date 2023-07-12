@@ -1,63 +1,86 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  labels:
-    name: nodejs
-  name: nodejs-controller
+  name: springappdeployment
 spec:
-  replicas: 1
+  replicas: 2
+  selector:
+    matchLabels:
+      app: springapp
   template:
     metadata:
+      name: springapppod
       labels:
-        name: nodejs
+        app: springapp
     spec:
-       containers:
-      - image: dockerdevops1994/nodejs-app
-        name: springboot
+      containers:
+      - name: springappcontainer
+        image: dockerdevops1994/nodejs-app:4
         ports:
-        - name: springboot
-          containerPort: 8080      
+        - containerPort: 8080
+        env:
+		- name: MONGO_DB_USERNAME
+          value: devdb
+        - name: MONGO_DB_PASSWORD
+          value: devdb123
+        - name: MONGO_DB_HOSTNAME
+          value: mongo 
+        - name: MONGODB_URI
+		  value: mongodb://devdb:devdb123@mongo:27017/
 ---
-# Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    name: springboot
-  name: springboot
+  name: springapp
 spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
   selector:
-    name: springboot
+    app: springapp
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: NodePort
 ---
-# Mongo host path rc
-apiVersion: v1
-kind: ReplicationController
+# Mongo db pod with volumes(HostPath)
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  labels:
-    name: mongo
-  name: mongo-controller
+  name: mongodbdeployment
 spec:
-  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
   template:
-    metadata:
-      labels:
-        name: mongo
-    spec:
-      containers:
-      - image: mongo
-        name: mongo
-        ports:
-        - name: mongo
-          containerPort: 27017
-          hostPort: 27017
-        volumeMounts:
-        - name: mongo-persistent-storage
-          mountPath: /data/db
-      volumes:
-      - name: mongo-persistent-storage
-        hostPath:
-         path: /tmp/dbbackup
+     metadata:
+       name: mongodbpod
+       labels:
+         app: mongodb
+     spec:
+       volumes:
+       - name: hostpathvol
+         hostPath:
+           path: /tmp/mongodb 
+       containers:
+       - name: mongodbcontainer
+         image: mongo
+         ports:
+         - containerPort: 27017
+         env:
+         - name: MONGO_INITDB_ROOT_USERNAME
+           value: devdb
+         - name: MONGO_INITDB_ROOT_PASSWORD
+           value: devdb123
+         volumeMounts:
+         - name: hostpathvol
+           mountPath: /data/db   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+spec:
+  type: ClusterIP
+  selector:
+    app: mongodb
+  ports:
+  - port: 27017
+    targetPort: 27017
