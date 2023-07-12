@@ -1,0 +1,13 @@
+pipeline{
+agent any
+stages{
+  stage('code CheckOutCode'){
+    steps{
+    git credentialsId: '26fbe54c-18e6-402b-85a0-3a9509bb6cee', url: 'https://github.com/mithun-divya/Ybrant-interview.git'
+		}
+  }
+    stage('Build'){
+  steps{
+  sh  "npm install"
+  }
+  }
