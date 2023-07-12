@@ -19,19 +19,32 @@ spec:
         ports:
         - containerPort: 8080
         env:
-		- name: MONGO_DB_USERNAME
+        - name: MONGO_DB_USERNAME
           value: devdb
         - name: MONGO_DB_PASSWORD
           value: devdb123
         - name: MONGO_DB_HOSTNAME
-          value: mongo 
+          value: mongo
         - name: MONGODB_URI
-		  value: mongodb://devdb:devdb123@mongo:27017/
+          value: mongodb://devdb:devdb123@mongo:27017/
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: springapp
+spec:
+  selector:
+    app: springapp
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: NodePort
+---
+# Mongo db pod with volumes(HostPath)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodbdeployment
 spec:
   selector:
     app: springapp
@@ -58,7 +71,7 @@ spec:
        volumes:
        - name: hostpathvol
          hostPath:
-           path: /tmp/mongodb 
+           path: /tmp/mongodb
        containers:
        - name: mongodbcontainer
          image: mongo
@@ -71,7 +84,7 @@ spec:
            value: devdb123
          volumeMounts:
          - name: hostpathvol
-           mountPath: /data/db   
+           mountPath: /data/db
 ---
 apiVersion: v1
 kind: Service
