@@ -13,13 +13,13 @@ stages{
   }
 stage('Build Docker Image'){
      steps{
-        sh 'docker build -t dockerdevops1994/nodejs-app:latest .'
+        sh 'docker build -t dockerdevops1994/nodejs-app:1 .'
     }
 }
     
 stage('Image scanning'){
    steps{
-        sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL dockerdevops1994/nodejs-app:latest' 
+        sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL dockerdevops1994/nodejs-app:1' 
     }
   }
 }
