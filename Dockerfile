@@ -1,16 +1,13 @@
-FROM node:12-slim
+FROM node:10
 
 WORKDIR /starter
-ENV NODE_ENV development
-
 COPY package.json /starter/package.json
 
-RUN npm install pm2 -g
-RUN npm install --production
+RUN npm install
 
 COPY .env.example /starter/.env.example
 COPY . /starter
 
-CMD ["pm2-runtime","app.js"]
+CMD ["node","app.js"]
 
-EXPOSE 8080
+EXPOSE 3000
