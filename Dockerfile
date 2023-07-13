@@ -10,4 +10,4 @@ COPY . /starter
 
 CMD ["node","app.js"]
 
-EXPOSE 3000
+EXPOSE 9981
