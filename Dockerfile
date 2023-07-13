@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:12-slim
 
 WORKDIR /starter
 COPY package.json /starter/package.json
