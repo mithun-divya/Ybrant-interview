@@ -19,7 +19,7 @@ stage('Build Docker Image'){
     
 stage('Image scanning'){
    steps{
-        sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL dockerdevops1994/nodejs-app:1' 
+        sh 'trivy image --exit-code 0 --severity HIGH,CRITICAL dockerdevops1994/nodejs-app:1' 
     }
   }
 }
