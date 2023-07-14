@@ -45,14 +45,24 @@ const app = express();
 /**
  * Connect to MongoDB.
  */
-mongoose.connect(process.env.MONGODB_URI
-                );
-mongoose.connection.on('error', (err) => {
-  console.error(err);
-  console.log('%s MongoDB connection error. Please make sure MongoDB is running.');
-  process.exit();
-});
+mongoose
+    .connect(process.env.MONGODB_URI)
+    .then(() => {
+      console.log('Mongodb connected....');
+    })
+    .catch(err => console.log(err.message));
 
+  mongoose.connection.on('connected', () => {
+    console.log('Mongoose connected to db...');
+  });
+
+  mongoose.connection.on('error', err => {
+    console.log(err.message);
+  });
+
+  mongoose.connection.on('disconnected', () => {
+    console.log('Mongoose connection is disconnected...');
+  });
 /**
  * Express configuration.
  */
