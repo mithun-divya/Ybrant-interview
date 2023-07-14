@@ -1,0 +1,34 @@
+pipeline{
+agent any
+stages{
+  stage('CheckOutCodenfrom git'){
+    steps{
+    git credentialsId: '26fbe54c-18e6-402b-85a0-3a9509bb6cee', url: 'https://github.com/mithun-divya/Ybrant-interview.git'
+		}
+  }
+ stage('Build'){
+  steps{
+  sh  "npm install"
+  }
+  }
+stage('Build Docker Image'){
+     steps{
+        sh 'docker build -t dockerdevops1994/nodejs-app:latest .'
+    }
+}
+stage('docker login and push'){
+     steps{
+        withCredentials([string(credentialsId: 'a51f5769-c7c2-477a-b60a-917186fb50a4', variable: 'dockerpassword')]) {
+    sh 'docker login -u dockerdevops1994 -p ${dockerpassword} '
+      }
+		sh 'docker push dockerdevops1994/nodejs-app:latest'
+    }
+	
+	}
+	stage('Deploy container to kubernetes'){
+     steps{
+        sh 'kubectl apply -f nodejsapplication.yml'
+    }
+}
+}
+}
