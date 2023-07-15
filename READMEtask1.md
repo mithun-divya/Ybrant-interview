@@ -1,4 +1,4 @@
-Task 1:
+![image](https://github.com/mithun-divya/Ybrant-interview/assets/125994104/3212c913-3e56-4de7-98e3-fe54d9455999)Task 1:
 Create CI/CD pipeline for the application in the link -
 https://github.com/sahat/hackathon-starter.git
 Readme contains the details of building the app. Feel free to use a github actions or Jenkins
@@ -10,9 +10,14 @@ I intsalled jenkins on amazon EC2 with centos distribution.
 Run & configure Jenkins (Wizard), install required plugins
 Generate and setup git ssh credentials, so your machine able to access the repo:
 
- 
+ ![image](https://github.com/mithun-divya/Ybrant-interview/assets/125994104/47835441-1f8f-4e1c-9c7b-b6565b9691ac)
+
 
 Setup webhook on github to call your jenkins endpoint, like this
+
+
+
+
  
 Create a new pipeline job.
 Check “hook trigger for Scm”, add repository url (with ssh credentials or token) and specify “master” branch to trigger.
