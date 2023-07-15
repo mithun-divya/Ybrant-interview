@@ -22,6 +22,11 @@ Created nodejsapplication.yml kubernetes manifest file to deploy this container 
 ![image](https://github.com/mithun-divya/Ybrant-interview/assets/125994104/29c7973c-d63d-4228-ac7b-1afd884e53d8)
 
 
+
+![image](https://github.com/mithun-divya/Ybrant-interview/assets/125994104/1b35c65f-a3d3-41a3-9b3d-31fd46fcbddd)
+
+
+
  
 
 
