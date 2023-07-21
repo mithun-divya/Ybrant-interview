@@ -5,7 +5,7 @@ Installed mongodb using ansible playbook install-mongo.yaml
  
 ![image](https://github.com/mithun-divya/Ybrant-interview/assets/125994104/c880721b-f379-4849-9d8f-38c2bbd48f09)
 Install Helm on master node
-
+nodejsapp the helm charts
 Helm create nodejsapp will create a directory with files and directories
 Updated values.yml file and templates files
 Added configmap.yaml and secret.yaml based on requirement
