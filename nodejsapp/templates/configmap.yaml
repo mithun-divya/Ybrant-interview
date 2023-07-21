@@ -5,4 +5,4 @@ metadata:
   labels:
     {{- include "nodejsapp.labels" . | nindent 4 }}
 data:
-  mongo_hostname: 13.235.45.117
+  mongo_hostname: 13.233.125.247
