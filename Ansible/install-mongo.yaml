@@ -107,17 +107,6 @@
           - { db: "admin", role: "readWrite" }
           - { db: "{{ database_name }}", role: "readWrite" }
 
-    - name: Create MongoDB backup user siteUserBackup
-      mongodb_user:
-        login_user: "{{ mongodb_root_user }}"
-        login_password: "{{ mongodb_root_password }}"
-        login_port: "27017"
-        database: "{{ database_name }}"
-        name: "{{ mongodb_backup_user }}"
-        password: "{{ mongodb_backup_password }}"
-        roles:
-          - { db: "admin", role: "backup" }
-
     - name: Enable remote connections in MongoDB
       lineinfile:
         path: /etc/mongod.conf
