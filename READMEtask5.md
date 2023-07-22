@@ -11,7 +11,7 @@ terraform plan
 // Run Terraform Script
 terraform apply
 
-Installed mongodb using ansible playbook install-mongo.yaml
+Installed mongodb using ansible playbook install-mongo.yaml in the Ansible folder
 
  ![image](https://github.com/mithun-divya/Ybrant-interview/assets/125994104/9f5901ef-70b0-4d76-b552-5d44d5663859)
 
