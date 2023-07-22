@@ -1,5 +1,7 @@
 created ec2 instance with terraform createec2-terraform.tf file
+
 Run commands 
+
 // Init Terraform
 terraform init
 
