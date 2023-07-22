@@ -3,9 +3,6 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-username: "root"
-password: "root1234"
-
 image:
   repository: dockerdevops1994/nodejs-app
   pullPolicy: IfNotPresent
