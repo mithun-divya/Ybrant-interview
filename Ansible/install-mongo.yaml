@@ -95,18 +95,6 @@
         password: "{{ mongodb_root_password }}"
         roles: "root"
 
-    - name: Create MongoDB administrative user siteUserAdmin
-      mongodb_user:
-        login_user: "{{ mongodb_root_user }}"
-        login_password: "{{ mongodb_root_password }}"
-        login_port: "27017"
-        database: "{{ database_name }}"
-        name: "{{ mongodb_admin_user }}"
-        password: "{{ mongodb_admin_password }}"
-        roles:
-          - { db: "admin", role: "readWrite" }
-          - { db: "{{ database_name }}", role: "readWrite" }
-
     - name: Enable remote connections in MongoDB
       lineinfile:
         path: /etc/mongod.conf
