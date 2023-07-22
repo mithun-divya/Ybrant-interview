@@ -1,3 +1,14 @@
+created ec2 instance with terraform createec2-terraform.tf file
+Run commands 
+// Init Terraform
+terraform init
+
+// Review Plan
+terraform plan
+
+// Run Terraform Script
+terraform apply
+
 Installed mongodb using ansible playbook install-mongo.yaml
 
  ![image](https://github.com/mithun-divya/Ybrant-interview/assets/125994104/9f5901ef-70b0-4d76-b552-5d44d5663859)
