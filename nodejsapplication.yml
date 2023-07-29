@@ -19,7 +19,7 @@ spec:
         - containerPort: 8080
         env:
         - name: MONGODB_URI
-          value: mongodb://10.102.86.144:27017/test
+          value: mongodb://10.103.136.91:27017/test
 ---
 apiVersion: v1
 kind: Service
