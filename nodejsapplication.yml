@@ -52,13 +52,6 @@ spec:
          image: mongo
          ports:
          - containerPort: 27017
-         volumeMounts:
-         - name: hostpathvol
-           mountPath: /data/db
-       volumes:
-       - name: hostpathvol
-         hostPath:
-           path: /tmp/dbbackup
 ---
 apiVersion: v1
 kind: Service
